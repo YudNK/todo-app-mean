@@ -1,0 +1,5 @@
+<div>
+    <input type="checkbox" [formControl]="statusForm" (change)="updateItem()"/>
+    {{ item()?.task }}
+    <button (click)="deleteItem()">delete</button>
+</div>
