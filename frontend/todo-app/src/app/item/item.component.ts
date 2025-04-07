@@ -16,11 +16,11 @@ export class ItemComponent implements OnInit {
   itemDeleted = output<string>();
   statusForm = new FormControl();
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.statusForm.setValue(this.item()?.status);
   }
 
-  updateItem() {
+  updateItem(): void {
     const item: Item = {
       id: this.item()!.id,
       status: this.statusForm.value,
@@ -31,7 +31,7 @@ export class ItemComponent implements OnInit {
     });
   }
 
-  deleteItem() {
+  deleteItem(): void {
     this.itemService.deleteItem(this.item()!);
     this.itemDeleted.emit(this.item()!.id);
   }

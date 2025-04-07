@@ -1,5 +1,1 @@
-todo app
-
-frontend: angular  
-backend: express 
- 
+Create a TODO app with MEAN stack.

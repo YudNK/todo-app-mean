@@ -23,7 +23,7 @@ export class AppComponent {
     });
   }
 
-  addItem() {
+  addItem(): void{
     const item: Item = {
       id : "",
       status: false, 
