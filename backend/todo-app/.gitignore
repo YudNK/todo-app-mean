@@ -1,0 +1,9 @@
+# Node
+/node_modules
+
+# compiled output 
+/dist
+
+# System files
+.DS_Store
+Thumbs.db
