@@ -1,23 +1,37 @@
-import express, { Express } from "express";
+import express, { Express, Request, Response } from "express";
+import { deleteItemById, insertItem, selectItems, updateItemById } from "./service/itemService";
 
 const app: Express = express();
-const port: number = parseInt(process.env.PORT ?? "3000");
+const port: number = parseInt(process.env.PORT ?? "8080");
 
+// config middleware
 app.use(express.urlencoded());
 app.use(express.json());
 
-app.get("/item", (req, res) => {
+// log: route
+app.use((req: Request, res: Response, next: any) => {
+    console.log(req.url);
+    next();
 });
 
-app.post("/item", (req, res) => {
+// http method route
+app.get("/item", selectItems);
+app.post("/item", insertItem);
+app.put("/item/:id", updateItemById);
+app.delete("/item/:id", deleteItemById);
+
+// error handling
+app.use((err: Error, req: Request, res: Response, next: any) => {
+    console.error("Error!");
+    console.error(err.stack);
+
+    if (res.headersSent) {
+        return next(err);
+    }
+    res.status(500).send("something wrong.");
 });
 
-app.put("/item/:id", (req, res) => {
-});
-
-app.delete("/item/:id", (req, res) => {
-});
-
+// server start
 app.listen(port, () => {
     console.log(`server is running on port: ${port}`)
 });
