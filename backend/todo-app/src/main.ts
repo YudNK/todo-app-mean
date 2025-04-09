@@ -11,6 +11,7 @@ app.use(express.json());
 // log: route
 app.use((req: Request, res: Response, next: any) => {
     console.log(req.url);
+    console.log(req.headers);
     next();
 });
 
