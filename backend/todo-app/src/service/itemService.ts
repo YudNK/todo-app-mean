@@ -9,9 +9,7 @@ export function selectItems(req: Request, res: Response, next: any): void {
                 status: true,
                 task: "coding"
             }
-        ]
-        // CORS
-        res.set("Access-Control-Allow-Origin", process.env.ACCESS_CONTROL_ALLOW_ORIGIN);
+        ];
 
         res.json(item);
     } catch (error) {
@@ -21,7 +19,14 @@ export function selectItems(req: Request, res: Response, next: any): void {
 
 export function insertItem(req: Request, res: Response, next: any): void {
     try {
+        const item: Item =
+        {
+            id: "5678",
+            status: false,
+            task: "test"
+        };
 
+        res.json(item);
     } catch (error) {
         next(error);
     }

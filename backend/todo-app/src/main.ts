@@ -11,8 +11,26 @@ app.use(express.json());
 // log: route
 app.use((req: Request, res: Response, next: any) => {
     console.log(req.url);
+    console.log(req.method);
     console.log(req.headers);
     next();
+});
+
+// CORS controll
+app.use((req: Request, res: Response, next: any) => {
+    res.set("Access-Control-Allow-Origin", process.env.ACCESS_CONTROL_ALLOW_ORIGIN);
+    next();
+});
+app.options("/item{/:id}", (req: Request, res: Response, next: any) => {
+    try {
+        res.set({
+            "Access-Control-Allow-Methods": "PUT, DELETE",
+            "Access-Control-Allow-Headers": "content-type",
+        });
+        res.status(204).end();
+    } catch (error) {
+        next(error);
+    }
 });
 
 // http method route
