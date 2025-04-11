@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "node --env-file=.env dist/main.js",
+    "start": "npm run build && node --env-file=.env dist/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "YudNK",
