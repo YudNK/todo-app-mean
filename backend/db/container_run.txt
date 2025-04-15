@@ -1,2 +1,2 @@
-# コンテナ作成と起動
+# create container and run command.
 docker run -p 127.0.0.1:27017:27017 --env-file ./.env -v ./data:/data/db -d --name todo-db-container <image>
