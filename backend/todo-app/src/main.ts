@@ -1,8 +1,9 @@
 import express, { Express, Request, Response } from "express";
-import { deleteItemById, insertItem, selectItems, updateItemById } from "./service/itemService";
+import { ItemService } from "./service/itemService";
 
 const app: Express = express();
 const port: number = parseInt(process.env.PORT ?? "8080");
+const itemService: ItemService = new ItemService();
 
 // config middleware
 app.use(express.urlencoded());
@@ -12,7 +13,6 @@ app.use(express.json());
 app.use((req: Request, res: Response, next: any) => {
     console.log(req.url);
     console.log(req.method);
-    console.log(req.headers);
     next();
 });
 
@@ -34,10 +34,10 @@ app.options("/item{/:id}", (req: Request, res: Response, next: any) => {
 });
 
 // http method route
-app.get("/item", selectItems);
-app.post("/item", insertItem);
-app.put("/item/:id", updateItemById);
-app.delete("/item/:id", deleteItemById);
+app.get("/item", itemService.selectItems);
+app.post("/item", itemService.insertItem);
+app.put("/item/:id", itemService.updateItemById);
+app.delete("/item/:id", itemService.deleteItemById);
 
 // error handling
 app.use((err: Error, req: Request, res: Response, next: any) => {

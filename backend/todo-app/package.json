@@ -11,7 +11,8 @@
   "author": "YudNK",
   "license": "MIT",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "mongodb": "^6.15.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
