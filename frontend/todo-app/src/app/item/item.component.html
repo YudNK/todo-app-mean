@@ -1,5 +1,11 @@
-<div>
-    <input type="checkbox" [formControl]="statusForm" (change)="updateItem()"/>
-    {{ item()?.task }}
-    <button (click)="deleteItem()">delete</button>
+<div class="items">
+    <div class="col1">
+        <input type="checkbox" [formControl]="statusForm" (change)="updateItem()" />
+    </div>
+    <div class="col2">{{ item()?.task }}</div>
+    <div class="col3">
+        <button (click)="deleteItem()" >
+            <span class="material-symbols-outlined">delete</span>
+        </button>
+    </div>
 </div>

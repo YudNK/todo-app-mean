@@ -1,9 +1,17 @@
 <div class="title">
-  <h3>ToDo</h3>
+  <h1>ToDo</h1>
 </div>
-<input type="text" [formControl]="taskForm" />
-<button (click)="addItem()">add</button>
-
+<div class="items">
+  <div class="col1"></div>
+  <div class="col2">
+    <input type="text" [formControl]="taskForm" />
+  </div>
+  <div class="col3">
+    <button (click)="addItem()" >
+      <span class="material-symbols-outlined">add</span>
+    </button>
+  </div>
+</div>
 @for(item of items(); track item.id) {
 <app-item [item]=item (itemDeleted)="removeItem($event)"></app-item>
 }
