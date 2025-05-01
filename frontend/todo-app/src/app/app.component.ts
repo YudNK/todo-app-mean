@@ -1,8 +1,8 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { ItemComponent } from './item/item.component';
 import { Item } from './model/item';
 import { ItemService } from './service/item.service';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +15,8 @@ export class AppComponent {
 
   title = 'todo-app'
   items = signal<Item[]>([]);
-  taskForm = new FormControl("");
+  taskForm = new FormControl("", Validators.required);
+  alertFlg = signal<boolean>(false);
 
   constructor() {
     this.itemService.getItems().then((items: Item[]) => {
@@ -23,12 +24,20 @@ export class AppComponent {
     });
   }
 
-  addItem(): void{
+  addItem(): void {
     const item: Item = {
-      id : "",
-      status: false, 
+      id: "",
+      status: false,
       task: this.taskForm.value ?? ""
     };
+
+    if (this.taskForm.invalid) {
+      this.alertFlg.set(true);
+      setTimeout(() => {
+        this.alertFlg.set(false);
+      }, 5000);
+      return;
+    }
 
     this.itemService.createItem(item).then((item: Item) => {
       this.items.update(value => [...value, item]);

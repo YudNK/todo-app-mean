@@ -22,7 +22,7 @@
 .col2>input {
     padding-left: 3px;
     padding-right: 3px;
-    width: 90%;
+    width: 100%;
     height: 50%;
 }
 
@@ -35,4 +35,11 @@
 button {
     background-color: unset;
     border: 0cap;
+}
+
+.alert {
+    width: 400px;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
 }
