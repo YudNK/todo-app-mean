@@ -1,0 +1,7 @@
+.git*
+.angular
+.editorconfig
+.vscode
+node_modules
+dist
+test
