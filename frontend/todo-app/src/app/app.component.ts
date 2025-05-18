@@ -35,7 +35,7 @@ export class AppComponent {
       this.alertFlg.set(true);
       setTimeout(() => {
         this.alertFlg.set(false);
-      }, 5000);
+      }, 500);
       return;
     }
 
