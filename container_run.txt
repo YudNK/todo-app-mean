@@ -1,2 +1,8 @@
-# create container and run command.
-docker run -p 127.0.0.1:27017:27017 --env-file ./.env -v ./data:/data/db -d --name todo-db-container <image>
+# create db container and run command. (at /backend/db)
+docker run --env-file ./.env -v ./data:/data/db -d --network=<bridge> --name todo-db-container <image>
+
+# create backend container and run command. 
+docker run -p 127.0.0.1:3000:3000 -d --network=<bridge> --name todo-backend-container <image>
+
+# create frontend container and run command. 
+docker run -p 127.0.0.1:8080:80 -d --network=<bridge> --name todo-frontend-container <image>
