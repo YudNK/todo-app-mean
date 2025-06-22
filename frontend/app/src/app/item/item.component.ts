@@ -27,7 +27,7 @@ export class ItemComponent implements OnInit {
       task: this.item()!.task,
     };
     this.itemService.updateItem(item).then((item: Item) => {
-      console.log(item);
+      console.log("update item.");
     });
   }
 
