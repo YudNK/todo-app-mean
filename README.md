@@ -38,4 +38,4 @@ docker run -p 127.0.0.1:8080:80 -d --network=<bridge> --name todo-frontend-conta
 ```
 
 #### 2. Kubernetes 
-(WIP)k8s minikube
+(WIP)
